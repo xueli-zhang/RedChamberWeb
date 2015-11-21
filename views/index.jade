@@ -24,21 +24,21 @@ block content
 
 				ul#navBar
 					li
-						a#story(href='/') 劇情透析
+						a#story(href='#') 劇情透析
 					li
-						a#walkThrough(href='/') 攻關秘籍
+						a#walkThrough(href='#') 攻關秘籍
 					li
-						a#devLog(href='/') 開發日誌
+						a#devLog(href='#') 開發日誌
 					li
-						a#froum(href='/') 遊戲討論
+						a#froum(href='#') 遊戲討論
 					li
-						a#onlineChat(href='/') 在線交流
+						a#onlineChat(href='#') 在線交流
 					li
-						a#credits(href='/') 開發人員
+						a#credits(href='#') 開發人員
 					li
-						a#email(href='/') 郵件我們
+						a#email(href='#') 郵件我們
 					li
-						a#logIn(href='/') 玩家登錄
+						a#logIn(href='#') 玩家登錄
 					li
 						a#signUp(href='/') 玩家註冊
 					
@@ -54,6 +54,15 @@ block content
 					img#emailPic(src='https://88f7585151da6f0eb044adb480012d24af7f35ca.googledrive.com/host/0B8VElOPvAs5qVHlhNTRHbmVkLW8/emailPic.jpg')
 					img#logInPic(src='https://88f7585151da6f0eb044adb480012d24af7f35ca.googledrive.com/host/0B8VElOPvAs5qVHlhNTRHbmVkLW8/logInPic.jpg')
 					img#signUpPic(src='https://88f7585151da6f0eb044adb480012d24af7f35ca.googledrive.com/host/0B8VElOPvAs5qVHlhNTRHbmVkLW8/signUpPic.jpg')
+
+				.clock
+					#Date
+					ul
+						li#hours  
+						li#point :
+						li#min  
+						li#point :
+						li#sec  
 				
 
 
@@ -62,63 +71,121 @@ block content
 
 	script.
 		$(function(){
+			var monthNames = [ "一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月" ]; 
+			var dayNames= ["週日","週一","週二","週三","週四","週五","週六"]
+
+
+			var newDate = new Date();
+			newDate.setDate(newDate.getDate());
+
+			$('#Date').html(newDate.getFullYear() + " " + monthNames[newDate.getMonth()] + ' ' + newDate.getDate() + '日 ' + dayNames[newDate.getDay()]);
+
+			setInterval( function() {
+
+				var seconds = new Date().getSeconds();
+
+				$("#sec").html(( seconds < 10 ? "0" : "" ) + seconds);
+				},1000);
+				
+			setInterval( function() {
+
+				var minutes = new Date().getMinutes();
+
+				$("#min").html(( minutes < 10 ? "0" : "" ) + minutes);
+				},1000);
+				
+			setInterval( function() {
+
+				var hours = new Date().getHours();
+
+				$("#hours").html(( hours < 10 ? "0" : "" ) + hours);
+				}, 1000);
+
+
 			$('#bkg').fadeOut(8000);
 			coverVid(document.querySelector('.masthead-video'), 1920, 1200);
 
 			$('#story').hover(function(){
 				console.log("shows up");
 				$('#storyPic').fadeIn(500);
+				$('.clock, #story').css('background-color','rgba(255,105,180,0.8)');
 			},function(){
 				console.log("hide up");		
 				$('#storyPic').fadeOut(500);
+				$('#story').css('background-color','transparent');
+				$('.clock').css('background-color','rgba(255,215,0,0.8)');
 			});
 			$('#walkThrough').hover(function(){
 				console.log("shows up");
 				$('#wlkTPic').fadeIn(500);
+				$('.clock, #walkThrough').css('background-color','rgba(255,255,255,0.8)');
 			},function(){				
 				$('#wlkTPic').fadeOut(500);
+				$('#walkThrough').css('background-color','transparent');
+				$('.clock').css('background-color','rgba(255,215,0,0.8)');
 			});
 			$('#devLog').hover(function(){
 				console.log("shows up");
 				$('#devLogPic').fadeIn(500);
+				$('.clock, #devLog').css('background-color','rgba(75,0,130,0.8)');
 			},function(){				
 				$('#devLogPic').fadeOut(500);
+				$('#devLog').css('background-color','transparent');
+				$('.clock').css('background-color','rgba(255,215,0,0.8)');
 			});
 			$('#froum').hover(function(){
 				console.log("shows up");
 				$('#froumPic').fadeIn(500);
+				$('.clock, #froum').css('background-color','rgba(118,238,0,0.8)');
 			},function(){				
 				$('#froumPic').fadeOut(500);
+				$('#froum').css('background-color','transparent');
+				$('.clock').css('background-color','rgba(255,215,0,0.8)');
 			});
 			$('#onlineChat').hover(function(){
 				console.log("shows up");
 				$('#oCPic').fadeIn(500);
+				$('.clock, #onlineChat').css('background-color','rgba(0,178,238,0.8)');
 			},function(){				
 				$('#oCPic').fadeOut(500);
+				$('#onlineChat').css('background-color','transparent');
+				$('.clock').css('background-color','rgba(255,215,0,0.8)');
 			});
 			$('#credits').hover(function(){
 				console.log("shows up");
 				$('#creidtsPic').fadeIn(500);
+				$('.clock, #credits').css('background-color','rgba(255,20,147,0.8)');
 			},function(){				
 				$('#creidtsPic').fadeOut(500);
+				$('#credits').css('background-color','transparent');
+				$('.clock').css('background-color','rgba(255,215,0,0.8)');
 			});
 			$('#email').hover(function(){
 				console.log("shows up");
 				$('#emailPic').fadeIn(500);
+				$('.clock, #email').css('background-color','rgba(255,255,0,0.8)');
 			},function(){				
 				$('#emailPic').fadeOut(500);
+				$('#email').css('background-color','transparent');
+				$('.clock').css('background-color','rgba(255,215,0,0.8)');
 			});
 			$('#logIn').hover(function(){
 				console.log("shows up");
 				$('#logInPic').fadeIn(500);
+				$('.clock, #logIn').css('background-color','rgba(0,255,0,0.8)');
 			},function(){				
 				$('#logInPic').fadeOut(500);
+				$('#logIn').css('background-color','transparent');
+				$('.clock').css('background-color','rgba(255,215,0,0.8)');
 			});
 			$('#signUp').hover(function(){
 				console.log("shows up");
 				$('#signUpPic').fadeIn(500);
+				$('.clock, #signUp').css('background-color','rgba(255,52,179,0.8)');
 			},function(){				
 				$('#signUpPic').fadeOut(500);
+				$('#signUp').css('background-color','transparent');
+				$('.clock').css('background-color','rgba(255,215,0,0.8)');
 			});
 
 
