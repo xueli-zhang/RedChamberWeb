@@ -19,6 +19,8 @@ block content
 				img(id='show' src='https://83fcad1b71ffbe94c363de4ac378b71a6463a5e8.googledrive.com/host/0B2HAvB_6mypLflVOZDRjNGpRdElPTGFZMjZneFBCblFWazh1WlMtSmJBLWI2WGFwY0VqVEE/show.png')
 
 		.content
+			.component
+
 				
 
 	script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js')
@@ -44,14 +46,14 @@ block content
 				console.log('hideBtn clicked!');
 				$('#hideBtn').hide();
 				$('#showBtn').show();
-				$('.content, .component').fadeOut(1000);
+				$('.component').fadeOut(1000);
 				console.log('content has faded out!');
 			});
 			$('#showBtn').click(function(){
 				console.log('showBtn clicked!');
 				$('#showBtn').hide();
 				$('#hideBtn').show();
-				$('.content, .component').fadeIn(1000);
+				$('.component').fadeIn(1000);
 				console.log('content has faded in!');
 			});
 		});
