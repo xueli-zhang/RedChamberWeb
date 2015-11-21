@@ -44,15 +44,15 @@ block content
 						button#hideBtn(type="button" title="隱藏界面(hide menu)")
 							img(id='hide' src='https://83fcad1b71ffbe94c363de4ac378b71a6463a5e8.googledrive.com/host/0B2HAvB_6mypLflVOZDRjNGpRdElPTGFZMjZneFBCblFWazh1WlMtSmJBLWI2WGFwY0VqVEE/hide.png')
 				#showInfo
-					img#storyPic(src='https://dl.dropboxusercontent.com/u/23011911/public/images/home/homeBkg.jpg')
-					img#wlkTPic(src='https://dl.dropboxusercontent.com/u/23011911/public/images/home/homeBkg.jpg')
-					img#devLogPic(src='https://dl.dropboxusercontent.com/u/23011911/public/images/home/homeBkg.jpg')
-					img#froumPic(src='https://dl.dropboxusercontent.com/u/23011911/public/images/home/homeBkg.jpg')
-					img#oCPic(src='https://dl.dropboxusercontent.com/u/23011911/public/images/home/homeBkg.jpg')
-					img#cridtsPic(src='https://dl.dropboxusercontent.com/u/23011911/public/images/home/homeBkg.jpg')
-					img#emailPic(src='https://dl.dropboxusercontent.com/u/23011911/public/images/home/homeBkg.jpg')
-					img#logInPic(src='https://dl.dropboxusercontent.com/u/23011911/public/images/home/homeBkg.jpg')
-					img#signUpPic(src='https://dl.dropboxusercontent.com/u/23011911/public/images/home/homeBkg.jpg')
+					img#storyPic(src='https://dl.dropboxusercontent.com/u/23011911/public/images/home/stroyPic.jpg')
+					img#wlkTPic(src='https://dl.dropboxusercontent.com/u/23011911/public/images/home/wlkTPic.jpg')
+					img#devLogPic(src='https://dl.dropboxusercontent.com/u/23011911/public/images/home/devLogPic.jpg')
+					img#froumPic(src='https://dl.dropboxusercontent.com/u/23011911/public/images/home/froumPic.jpg')
+					img#oCPic(src='https://dl.dropboxusercontent.com/u/23011911/public/images/home/oCPic.jpg')
+					img#creidtsPic(src='https://dl.dropboxusercontent.com/u/23011911/public/images/home/cridtsPic.jpg')
+					img#emailPic(src='https://dl.dropboxusercontent.com/u/23011911/public/images/home/emailPic.jpg')
+					img#logInPic(src='https://dl.dropboxusercontent.com/u/23011911/public/images/home/logInPic.jpg')
+					img#signUpPic(src='https://dl.dropboxusercontent.com/u/23011911/public/images/home/signUpPic.jpg')
 				
 
 
@@ -63,13 +63,63 @@ block content
 		$(function(){
 			$('#bkg').fadeOut(8000);
 			coverVid(document.querySelector('.masthead-video'), 1920, 1200);
+
 			$('#story').hover(function(){
 				console.log("shows up");
-				$('#storyPic').fadeIn(1000);
+				$('#storyPic').fadeIn(500);
 			},function(){
-				console.log("hide up");
-				$('#storyPic').fadeOut(1000);
+				console.log("hide up");		
+				$('#storyPic').fadeOut(500);
 			});
+			$('#walkThrough').hover(function(){
+				console.log("shows up");
+				$('#wlkTPic').fadeIn(500);
+			},function(){				
+				$('#wlkTPic').fadeOut(500);
+			});
+			$('#devLog').hover(function(){
+				console.log("shows up");
+				$('#devLogPic').fadeIn(500);
+			},function(){				
+				$('#devLogPic').fadeOut(500);
+			});
+			$('#froum').hover(function(){
+				console.log("shows up");
+				$('#froumPic').fadeIn(500);
+			},function(){				
+				$('#froumPic').fadeOut(500);
+			});
+			$('#onlineChat').hover(function(){
+				console.log("shows up");
+				$('#oCPic').fadeIn(500);
+			},function(){				
+				$('#oCPic').fadeOut(500);
+			});
+			$('#credits').hover(function(){
+				console.log("shows up");
+				$('#creidtsPic').fadeIn(500);
+			},function(){				
+				$('#creidtsPic').fadeOut(500);
+			});
+			$('#email').hover(function(){
+				console.log("shows up");
+				$('#emailPic').fadeIn(500);
+			},function(){				
+				$('#emailPic').fadeOut(500);
+			});
+			$('#logIn').hover(function(){
+				console.log("shows up");
+				$('#logInPic').fadeIn(500);
+			},function(){				
+				$('#logInPic').fadeOut(500);
+			});
+			$('#signUp').hover(function(){
+				console.log("shows up");
+				$('#signUpPic').fadeIn(500);
+			},function(){				
+				$('#signUpPic').fadeOut(500);
+			});
+
 
 			$('#muteBtn').click(function(){
 				$('#muteBtn').hide();
