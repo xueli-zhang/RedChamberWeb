@@ -13,17 +13,42 @@ block content
 				img(id='mute' src='https://83fcad1b71ffbe94c363de4ac378b71a6463a5e8.googledrive.com/host/0B2HAvB_6mypLflVOZDRjNGpRdElPTGFZMjZneFBCblFWazh1WlMtSmJBLWI2WGFwY0VqVEE/mute.png')
 			button#unmuteBtn(type="button" title="放音(unmute)")
 				img(id='ummute' src='https://83fcad1b71ffbe94c363de4ac378b71a6463a5e8.googledrive.com/host/0B2HAvB_6mypLflVOZDRjNGpRdElPTGFZMjZneFBCblFWazh1WlMtSmJBLWI2WGFwY0VqVEE/unmute.png')
+
 			button#hideBtn(type="button" title="隱藏界面(hide menu)")
 				img(id='hide' src='https://83fcad1b71ffbe94c363de4ac378b71a6463a5e8.googledrive.com/host/0B2HAvB_6mypLflVOZDRjNGpRdElPTGFZMjZneFBCblFWazh1WlMtSmJBLWI2WGFwY0VqVEE/hide.png')
 			button#showBtn(type="button" title="顯示界面(show menu)")
-				img(id='show' src='https://83fcad1b71ffbe94c363de4ac378b71a6463a5e8.googledrive.com/host/0B2HAvB_6mypLflVOZDRjNGpRdElPTGFZMjZneFBCblFWazh1WlMtSmJBLWI2WGFwY0VqVEE/show.png')
+				img(id='show' src='https://dl.dropboxusercontent.com/u/23011911/public/images/home/title.png')
+			span#right ©2015 Xueli Zhang. All rights reserved. 
 
 		.content
 			.component
+				ul#navBar
+					li#intro
+						span 遊戲梗概
+					li#story
+						span 劇情透析
+					li#walkthrough
+						span 攻關秘籍
+					li#devLevel
+						span 開發進度
+					li#log
+						span 開發日誌
+					li#froum
+						span 遊戲討論
+					li#onlineChat
+						span 在線交流
+					li#credits
+						span 開發人員
+					li#emial
+						span 郵件我們
+					li#logIn
+						span 玩家登錄
+					li#signUp
+						span 玩家註冊
 
 				
 
-	script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js')
+
 	script(src='https://dl.dropboxusercontent.com/u/23011911/public/javascripts/HomePage/covervid.js')
 	script(src='https://dl.dropboxusercontent.com/u/23011911/public/javascripts/HomePage/scripts.js')
 
@@ -45,8 +70,8 @@ block content
 			$('#hideBtn').click(function(){
 				console.log('hideBtn clicked!');
 				$('#hideBtn').hide();
-				$('#showBtn').show();
 				$('.component').fadeOut(1000);
+				$('#showBtn').delay(1200).fadeIn(0);
 				console.log('content has faded out!');
 			});
 			$('#showBtn').click(function(){
