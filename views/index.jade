@@ -3,10 +3,12 @@ extends layout
 block content
 	img#bkg(src='https://83fcad1b71ffbe94c363de4ac378b71a6463a5e8.googledrive.com/host/0B2HAvB_6mypLflVOZDRjNGpRdElPTGFZMjZneFBCblFWazh1WlMtSmJBLWI2WGFwY0VqVEE/HomeBkg2.jpg')
 	img#bkg2(src='https://83fcad1b71ffbe94c363de4ac378b71a6463a5e8.googledrive.com/host/0B2HAvB_6mypLflVOZDRjNGpRdElPTGFZMjZneFBCblFWazh1WlMtSmJBLWI2WGFwY0VqVEE/HomeBkg.jpg')
+	audio#ost(autoplay loop)
+			source(src='https://dl.dropboxusercontent.com/u/23011911/public/musics/homeOst.mp3' type='audio/mp3')
 	section.masthead
 		.covervid-wrapper
 			video#bkgVid.masthead-video(name='bkgVid' muted autoplay loop)
-				source(src='https://39e79f828be9d82ed354a9d59c6fdfd6e73042da.googledrive.com/host/0B2HAvB_6mypLflVmUzZDOWhQcENwQ2YtcUU5UVdWazJQRjZ1VkRKSm9SZldQUmF1R3BGSm8/Home.mp4' type='video/mp4')
+				source(src='https://dl.dropboxusercontent.com/u/23011911/public/Videos/homePageBk.mp4' type='video/mp4')
 		.container
 			button#muteBtn(type="button" title="靜音(mute)")
 				img(id='mute' src='https://83fcad1b71ffbe94c363de4ac378b71a6463a5e8.googledrive.com/host/0B2HAvB_6mypLflVOZDRjNGpRdElPTGFZMjZneFBCblFWazh1WlMtSmJBLWI2WGFwY0VqVEE/mute.png')
@@ -18,124 +20,29 @@ block content
 				img(id='show' src='https://83fcad1b71ffbe94c363de4ac378b71a6463a5e8.googledrive.com/host/0B2HAvB_6mypLflVOZDRjNGpRdElPTGFZMjZneFBCblFWazh1WlMtSmJBLWI2WGFwY0VqVEE/show.png')
 
 			.component
-				button#cn-button.cn-button 展開
-				#cn-wrapper.cn-wrapper
-					ul
-						li#news
-							a(href='/classicOfPoetry')
-								span 詩
-						li#works
-							a(href='/bookOfDocuments')
-								span 書
-						li#about
-							a(href='/bookOfRites')
-								span 禮
-						li#contact
-							a(href='/classicOfMusic')
-								span 樂
-						li#help
-							a(href='/IChing')
-								span 易
-						li#signup
-							a(href='/springAndAutumnAnnals')
-								span 春秋
-						li#login
-							a(href='/')
-								span 返回
 
-
-				.clock
-					#Date
-					ul
-						li#hours  
-						li#point :
-						li#min  
-						li#point :
-						li#sec  
 
 		.content
-			.contentLeft
-				#title 
-					|有章服之美謂之華
-					br
-					|有禮儀之大謂之夏
-
-			.contentRight
-				img#coverCont(src='https://83fcad1b71ffbe94c363de4ac378b71a6463a5e8.googledrive.com/host/0B2HAvB_6mypLflVOZDRjNGpRdElPTGFZMjZneFBCblFWazh1WlMtSmJBLWI2WGFwY0VqVEE/huaxia.jpg')
-				img#newsCont.Cont(src='https://83fcad1b71ffbe94c363de4ac378b71a6463a5e8.googledrive.com/host/0B2HAvB_6mypLflVOZDRjNGpRdElPTGFZMjZneFBCblFWazh1WlMtSmJBLWI2WGFwY0VqVEE/shi.jpg')
-				img#worksCont.Cont(src='https://83fcad1b71ffbe94c363de4ac378b71a6463a5e8.googledrive.com/host/0B2HAvB_6mypLflVOZDRjNGpRdElPTGFZMjZneFBCblFWazh1WlMtSmJBLWI2WGFwY0VqVEE/shu.jpg')
-				img#aboutCont.Cont(src='https://83fcad1b71ffbe94c363de4ac378b71a6463a5e8.googledrive.com/host/0B2HAvB_6mypLflVOZDRjNGpRdElPTGFZMjZneFBCblFWazh1WlMtSmJBLWI2WGFwY0VqVEE/li.jpg')
-				img#contactCont.Cont(src='https://83fcad1b71ffbe94c363de4ac378b71a6463a5e8.googledrive.com/host/0B2HAvB_6mypLflVOZDRjNGpRdElPTGFZMjZneFBCblFWazh1WlMtSmJBLWI2WGFwY0VqVEE/yue.jpg')
-				img#helpCont.Cont(src='https://83fcad1b71ffbe94c363de4ac378b71a6463a5e8.googledrive.com/host/0B2HAvB_6mypLflVOZDRjNGpRdElPTGFZMjZneFBCblFWazh1WlMtSmJBLWI2WGFwY0VqVEE/yi.jpg')
-				img#signupCont.Cont(src='https://83fcad1b71ffbe94c363de4ac378b71a6463a5e8.googledrive.com/host/0B2HAvB_6mypLflVOZDRjNGpRdElPTGFZMjZneFBCblFWazh1WlMtSmJBLWI2WGFwY0VqVEE/chunq.jpg')
-				img#loginCont.Cont(src='https://83fcad1b71ffbe94c363de4ac378b71a6463a5e8.googledrive.com/host/0B2HAvB_6mypLflVOZDRjNGpRdElPTGFZMjZneFBCblFWazh1WlMtSmJBLWI2WGFwY0VqVEE/back.jpg')
-			.contentRightM
-				img#coverContM(src='https://83fcad1b71ffbe94c363de4ac378b71a6463a5e8.googledrive.com/host/0B2HAvB_6mypLflVOZDRjNGpRdElPTGFZMjZneFBCblFWazh1WlMtSmJBLWI2WGFwY0VqVEE/huaxia.jpg')
-				img#newsContM.ContM(src='https://83fcad1b71ffbe94c363de4ac378b71a6463a5e8.googledrive.com/host/0B2HAvB_6mypLflVOZDRjNGpRdElPTGFZMjZneFBCblFWazh1WlMtSmJBLWI2WGFwY0VqVEE/shi.jpg')
-				img#worksContM.ContM(src='https://83fcad1b71ffbe94c363de4ac378b71a6463a5e8.googledrive.com/host/0B2HAvB_6mypLflVOZDRjNGpRdElPTGFZMjZneFBCblFWazh1WlMtSmJBLWI2WGFwY0VqVEE/shu.jpg')
-				img#aboutContM.ContM(src='https://83fcad1b71ffbe94c363de4ac378b71a6463a5e8.googledrive.com/host/0B2HAvB_6mypLflVOZDRjNGpRdElPTGFZMjZneFBCblFWazh1WlMtSmJBLWI2WGFwY0VqVEE/li.jpg')
-				img#contactContM.ContM(src='https://83fcad1b71ffbe94c363de4ac378b71a6463a5e8.googledrive.com/host/0B2HAvB_6mypLflVOZDRjNGpRdElPTGFZMjZneFBCblFWazh1WlMtSmJBLWI2WGFwY0VqVEE/yue.jpg')
-				img#helpContM.ContM(src='https://83fcad1b71ffbe94c363de4ac378b71a6463a5e8.googledrive.com/host/0B2HAvB_6mypLflVOZDRjNGpRdElPTGFZMjZneFBCblFWazh1WlMtSmJBLWI2WGFwY0VqVEE/yi.jpg')
-				img#signupContM.ContM(src='https://83fcad1b71ffbe94c363de4ac378b71a6463a5e8.googledrive.com/host/0B2HAvB_6mypLflVOZDRjNGpRdElPTGFZMjZneFBCblFWazh1WlMtSmJBLWI2WGFwY0VqVEE/chunq.jpg')
-				img#loginContM.ContM(src='https://83fcad1b71ffbe94c363de4ac378b71a6463a5e8.googledrive.com/host/0B2HAvB_6mypLflVOZDRjNGpRdElPTGFZMjZneFBCblFWazh1WlMtSmJBLWI2WGFwY0VqVEE/back.jpg')
 				
 
 	script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js')
-	script(src='https://googledrive.com/host/0B-EV3mRcfXTISDBJTzdrOHFoQ2c/polyfills.js')
-	script(src='https://6e9525e83251f8eee3adb0b4f9d912805a8f43bd.googledrive.com/host/0B2HAvB_6mypLfnhyaTRfS1lieU9obHVuaWJKYXFpbGhJeVpZcWstM29PQ1hyTUJEeHkzSms/menu.js')
 	script(src='https://6e9525e83251f8eee3adb0b4f9d912805a8f43bd.googledrive.com/host/0B2HAvB_6mypLfnhyaTRfS1lieU9obHVuaWJKYXFpbGhJeVpZcWstM29PQ1hyTUJEeHkzSms/covervid.js')
 	script(src='https://6e9525e83251f8eee3adb0b4f9d912805a8f43bd.googledrive.com/host/0B2HAvB_6mypLfnhyaTRfS1lieU9obHVuaWJKYXFpbGhJeVpZcWstM29PQ1hyTUJEeHkzSms/scripts.js')
 
 	script.
-		$(document).ready(function() {
-			var monthNames = [ "一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月" ]; 
-			var dayNames= ["週日","週一","週二","週三","週四","週五","週六"]
-
-
-			var newDate = new Date();
-			newDate.setDate(newDate.getDate());
-
-			$('#Date').html(newDate.getFullYear() + " " + monthNames[newDate.getMonth()] + ' ' + newDate.getDate() + '日 ' + dayNames[newDate.getDay()]);
-
-			setInterval( function() {
-
-				var seconds = new Date().getSeconds();
-
-				$("#sec").html(( seconds < 10 ? "0" : "" ) + seconds);
-				},1000);
-				
-			setInterval( function() {
-
-				var minutes = new Date().getMinutes();
-
-				$("#min").html(( minutes < 10 ? "0" : "" ) + minutes);
-				},1000);
-				
-			setInterval( function() {
-
-				var hours = new Date().getHours();
-
-				$("#hours").html(( hours < 10 ? "0" : "" ) + hours);
-				}, 1000);
-	
-		});
 		$(function(){
 			$('#bkg').fadeOut(8000);
 			coverVid(document.querySelector('.masthead-video'), 1920, 1200);
 			$('#muteBtn').click(function(){
-				console.log('Btn clicked! '+ document.getElementById('bkgVid').muted);
 				$('#muteBtn').hide();
 				$('#unmuteBtn').show();
-				document.getElementById('bkgVid').muted=true;
-				console.dir($('#bkgVid'));
+				document.getElementById('ost').muted=true;
 
 			});
 			$('#unmuteBtn').click(function(){
-				console.log('Btn clicked! '+ document.getElementById('bkgVid').muted);
 				$('#unmuteBtn').hide();
 				$('#muteBtn').show();
-				document.getElementById('bkgVid').muted=false;
-				console.dir($('#bkgVid'));
+				document.getElementById('ost').muted=false;
 
 			});
 			$('#hideBtn').click(function(){
@@ -163,172 +70,8 @@ block content
 				console.log('a mobile');
 				$('#muteBtn').hide();
 				$('#coverCont').hide();
-				$('#news').hover(function(){
-					$('#title').html('詩');
-					$('#coverContM').animate({
-						width: "0"
-					},200,function(){
-						$('#newsContM').animate({
-							width: "100%"
-						},200);
-					});
-				},function(){
-					$('#newsContM').animate({
-						width: "0"
-					},200);
-				});
-				$('#works').hover(function(){
-					$('#title').html('書');
-					$('#coverContM').animate({
-						width: "0"
-					},200,function(){
-						$('#worksContM').animate({
-							width: "100%"
-						},200);
-					});
-				},function(){
-					$('#worksContM').animate({
-						width: "0"
-					},200);
-				});
-				$('#about').hover(function(){
-					$('#title').html('禮');
-					$('#coverContM').animate({
-						width: "0"
-					},200,function(){
-						$('#aboutContM').animate({
-							width: "100%"
-						},200);
-					});
-				},function(){
-					$('#aboutContM').animate({
-						width: "0"
-					},200);
-				});
-				$('#contact').hover(function(){
-					$('#title').html('樂');
-					$('#coverContM').animate({
-						width: "0"
-					},200,function(){
-						$('#contactContM').animate({
-							width: "100%"
-						},200);
-					});
-				},function(){
-					$('#contactContM').animate({
-						width: "0"
-					},200);
-				});
-				$('#help').hover(function(){
-					$('#title').html('易');
-					$('#coverContM').animate({
-						width: "0"
-					},200,function(){
-						$('#helpContM').animate({
-							width: "100%"
-						},200);
-					});
-				},function(){
-					$('#helpContM').animate({
-						width: "0"
-					},200);
-				});
-				$('#signup').hover(function(){
-					$('#title').html('春秋');
-					$('#coverContM').animate({
-						width: "0"
-					},200,function(){
-						$('#signupContM').animate({
-							width: "100%"
-						},200);
-					});
-				},function(){
-					$('#signupContM').animate({
-						width: "0"
-					},200);
-				});
-				$('#login').hover(function(){
-					$('#title').html('返回');
-					$('#coverContM').animate({
-						width: "0"
-					},200,function(){
-						$('#loginContM').animate({
-							width: "100%"
-						},200);
-					});
-				},function(){
-					$('#loginContM').animate({
-						width: "0"
-					},200);
-				});
-				$('#cn-button').hover(function(){
-					$('#title').html('有章服之美謂之華<br>有禮儀之大稱之夏');
-					$('#coverContM').animate({
-						width: "100%"
-					},200);
-				});
 			}else{
 				console.log('not a mobile');
-				$('#coverContM').hide();
-				$('#news').hover(function(){
-					$('#title').html('詩');
-					$('#newsCont').fadeIn(500,function(){					
-						$('#coverCont').fadeOut(500);
-					});
-				},function(){
-					$('#newsCont').fadeOut(500);
-				});
-				$('#works').hover(function(){
-					$('#title').html('書');
-					$('#worksCont').fadeIn(500,function(){					
-						$('#coverCont').fadeOut(500);
-					});
-				},function(){
-					$('#worksCont').fadeOut(500);
-				});
-				$('#about').hover(function(){
-					$('#title').html('禮');
-					$('#aboutCont').fadeIn(500,function(){					
-						$('#coverCont').fadeOut(500);
-					});
-				},function(){
-					$('#aboutCont').fadeOut(500);
-				});
-				$('#contact').hover(function(){
-					$('#title').html('樂');
-					$('#contactCont').fadeIn(500,function(){					
-						$('#coverCont').fadeOut(500);
-					});
-				},function(){
-					$('#contactCont').fadeOut(500);
-				});
-				$('#help').hover(function(){
-					$('#title').html('易');
-					$('#helpCont').fadeIn(500,function(){					
-						$('#coverCont').fadeOut(500);
-					});
-				},function(){
-					$('#helpCont').fadeOut(500);
-				});
-				$('#signup').hover(function(){
-					$('#title').html('春秋');
-					$('#signupCont').fadeIn(500,function(){					
-						$('#coverCont').fadeOut(500);
-					});
-				},function(){
-					$('#signupCont').fadeOut(500);
-				});
-				$('#login').hover(function(){
-					$('#title').html('返回');
-					$('#loginCont').fadeIn(500,function(){					
-						$('#coverCont').fadeOut(500);
-					});
-				},function(){
-					$('#loginCont').fadeOut(500);
-				});
-				$('#cn-button').hover(function(){
-					$('#title').html('有章服之美謂之華<br>有禮儀之大稱之夏');
-					$('#coverCont').fadeIn(500);
-				});				
+				$('#coverContM').hide();							
 			}
 		});
