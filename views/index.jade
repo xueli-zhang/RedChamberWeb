@@ -25,7 +25,7 @@ block content
 					li
 						a#story(href='/') 劇情透析
 					li
-						a#walkthrough(href='/') 攻關秘籍
+						a#walkThrough(href='/') 攻關秘籍
 					li
 						a#devLog(href='/') 開發日誌
 					li
@@ -35,7 +35,7 @@ block content
 					li
 						a#credits(href='/') 開發人員
 					li
-						a#emial(href='/') 郵件我們
+						a#email(href='/') 郵件我們
 					li
 						a#logIn(href='/') 玩家登錄
 					li
@@ -43,7 +43,16 @@ block content
 					li
 						button#hideBtn(type="button" title="隱藏界面(hide menu)")
 							img(id='hide' src='https://83fcad1b71ffbe94c363de4ac378b71a6463a5e8.googledrive.com/host/0B2HAvB_6mypLflVOZDRjNGpRdElPTGFZMjZneFBCblFWazh1WlMtSmJBLWI2WGFwY0VqVEE/hide.png')
-
+				#showInfo
+					img#storyPic(src='https://dl.dropboxusercontent.com/u/23011911/public/images/home/homeBkg.jpg')
+					img#wlkTPic(src='https://dl.dropboxusercontent.com/u/23011911/public/images/home/homeBkg.jpg')
+					img#devLogPic(src='https://dl.dropboxusercontent.com/u/23011911/public/images/home/homeBkg.jpg')
+					img#froumPic(src='https://dl.dropboxusercontent.com/u/23011911/public/images/home/homeBkg.jpg')
+					img#oCPic(src='https://dl.dropboxusercontent.com/u/23011911/public/images/home/homeBkg.jpg')
+					img#cridtsPic(src='https://dl.dropboxusercontent.com/u/23011911/public/images/home/homeBkg.jpg')
+					img#emailPic(src='https://dl.dropboxusercontent.com/u/23011911/public/images/home/homeBkg.jpg')
+					img#logInPic(src='https://dl.dropboxusercontent.com/u/23011911/public/images/home/homeBkg.jpg')
+					img#signUpPic(src='https://dl.dropboxusercontent.com/u/23011911/public/images/home/homeBkg.jpg')
 				
 
 
@@ -54,6 +63,14 @@ block content
 		$(function(){
 			$('#bkg').fadeOut(8000);
 			coverVid(document.querySelector('.masthead-video'), 1920, 1200);
+			$('#story').hover(function(){
+				console.log("shows up");
+				$('#storyPic').fadeIn(1000);
+			},function(){
+				console.log("hide up");
+				$('#storyPic').fadeOut(1000);
+			});
+
 			$('#muteBtn').click(function(){
 				$('#muteBtn').hide();
 				$('#unmuteBtn').show();
