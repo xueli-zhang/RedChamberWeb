@@ -68,10 +68,9 @@ block content
 			form#logInPad(method="post")
 				.title 歡迎登入
 				.inputContent
-					input(type="text" name="name" placeholder="請輸入玩家名稱")
-
+					input#logUN(type="text" name="name" placeholder="請輸入玩家名稱")
 				.inputContent
-					input(type="password" name="password" placeholder="請輸入玩家密碼")
+					input#logPW(type="password" name="password" placeholder="請輸入玩家密碼")
 				.padButtons
 					button#logInBt(type="button") 登入
 				.padButtons
@@ -80,12 +79,18 @@ block content
 			
 			form#signUpPad(method="post")
 				.title 歡迎註冊
-				input(type="text" name="name" placeholder="請輸入玩家名稱")
-				input(type="password" name="password" placeholder="請輸入玩家密碼")
-				input(type="password" name="rePassword" placeholder="確認玩家密碼")
-				input(type="email" name="email" placeholder="請輸入玩家郵箱")
-				button#signUpBtn(type="button") 注册
-				button#cancel2(type='button') 取消
+				.inputContent
+					input#signUN(type="text" name="name" placeholder="請輸入玩家名稱")
+				.inputContent
+					input#signPW(type="password" name="password" placeholder="請輸入玩家密碼")
+				.inputContent
+					input#signRPW(type="password" name="rePassword" placeholder="確認玩家密碼")
+				.inputContent
+					input#email(type="email" name="email" placeholder="請輸入玩家郵箱")
+				.padButtons
+					button#signUpBtn(type="button") 注册
+				.padButtons
+					button#cancel2(type='button') 取消
 
 
 
@@ -219,6 +224,7 @@ block content
 			});
 			$('#cancel1').click(function(){
 				$('#logInPad').fadeOut(1000,function(){
+					$('.inputContent').find('input').val('');
 					$('.component').fadeIn(1000);
 				});
 			});
@@ -230,6 +236,7 @@ block content
 			});			
 			$('#cancel2').click(function(){
 				$('#signUpPad').fadeOut(1000,function(){
+					$('.inputContent').find('input').val('');
 					$('.component').fadeIn(1000);
 				});
 			});
