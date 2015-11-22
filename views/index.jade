@@ -72,9 +72,10 @@ block content
 				.inputContent
 					input#logPW(type="password" name="password" placeholder="請輸入玩家密碼")
 				.padButtons
-					button#logInBt(type="button") 登入
+					button#logInBtn(type="button") 登入
 				.padButtons
 					button#cancel1(type="button") 取消
+				#logErr
 
 			
 			form#signUpPad(method="post")
@@ -91,6 +92,7 @@ block content
 					button#signUpBtn(type="button") 注册
 				.padButtons
 					button#cancel2(type='button') 取消
+				#signErr
 
 
 
@@ -214,6 +216,25 @@ block content
 				$('#signUpPic').fadeOut(500);
 				$('#signUp').css('background-color','transparent');
 				$('.clock').css('background-color','rgba(255,215,0,0.8)');
+			});
+
+			$('#logInBtn').click(function(){
+				if($('#logUN').val()==null||$('#logPW').val()==null||$('#logUN').val().trim()==''||$('#logPW').val().trim()==''){
+					$('#logErr').html('用戶名或密碼不能為空!');
+					return;
+				}
+				$('#logInPad').submit();
+			});
+			$('#signUpBtn').click(function(){
+				if($('#signUN').val()==null||$('#signPW').val()==null||$('#signUN').val().trim()==''||$('#signUN').val().trim()==''||$('#signRPW').val()==null||$('#signRPW').val().trim()==''||$('#email').val().trim()==''||$('#email').val()==null){
+					$('#signErr').html('用戶信息不能為空!');
+					return;
+				}
+				if($('#email').val().indexOf('@')==-1){					
+					$('#signErr').html('郵箱不正確！');
+					return;
+				}
+				$('#signUpPad').submit();
 			});
 
 			$('#logIn').click(function(){
