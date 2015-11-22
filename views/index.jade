@@ -8,7 +8,7 @@ block content
 	section.masthead
 		.covervid-wrapper
 			video#bkgVid.masthead-video(name='bkgVid' muted autoplay loop)
-				source(src='https://2b258eeccc43fc0cad710ebfbdee5f63f5acf9f9.googledrive.com/host/0B8VElOPvAs5qZDgwSlJzUVgzeUE/homePageBk.mp4' type='video/mp4')
+				source(src='https://dl.dropboxusercontent.com/u/23011911/public/Videos/homePageBk.mp4' type='video/mp4')
 		.container
 			button#muteBtn(type="button" title="靜音(mute)")
 				img(id='mute' src='https://83fcad1b71ffbe94c363de4ac378b71a6463a5e8.googledrive.com/host/0B2HAvB_6mypLflVOZDRjNGpRdElPTGFZMjZneFBCblFWazh1WlMtSmJBLWI2WGFwY0VqVEE/mute.png')
@@ -38,7 +38,7 @@ block content
 					li
 						a#email(href='#') 郵件我們
 					li
-						a#logIn(href='#') 玩家登錄
+						button#logIn(type="button") 玩家登錄
 					li
 						button#signUp(type="button") 玩家註冊
 					
@@ -63,7 +63,30 @@ block content
 						li#min  
 						li#point :
 						li#sec  
-				
+		
+			
+			form#logInPad(method="post")
+				.title 歡迎登入
+				.inputContent
+					input(type="text" name="name" placeholder="請輸入玩家名稱")
+
+				.inputContent
+					input(type="password" name="password" placeholder="請輸入玩家密碼")
+				.padButtons
+					button#logInBt(type="button") 登入
+				.padButtons
+					button#cancel1(type="button") 取消
+
+			
+			form#signUpPad(method="post")
+				.title 歡迎註冊
+				input(type="text" name="name" placeholder="請輸入玩家名稱")
+				input(type="password" name="password" placeholder="請輸入玩家密碼")
+				input(type="password" name="rePassword" placeholder="確認玩家密碼")
+				input(type="email" name="email" placeholder="請輸入玩家郵箱")
+				button#signUpBtn(type="button") 注册
+				button#cancel2(type='button') 取消
+
 
 
 	script(src='https://8d7f269174c15abe9b5a9bd3af9be6abd03bcfb6.googledrive.com/host/0B8VElOPvAs5qTmQteXJzVnJVMEE/covervid.js')
@@ -188,6 +211,28 @@ block content
 				$('.clock').css('background-color','rgba(255,215,0,0.8)');
 			});
 
+			$('#logIn').click(function(){
+				console.log('login clicked');
+				$('.component').fadeOut(1000,function(){
+					$('#logInPad').fadeIn(1000);
+				});
+			});
+			$('#cancel1').click(function(){
+				$('#logInPad').fadeOut(1000,function(){
+					$('.component').fadeIn(1000);
+				});
+			});
+			$('#signUp').click(function(){
+				console.log('login clicked');
+				$('.component').fadeOut(1000,function(){
+					$('#signUpPad').fadeIn(1000);
+				});
+			});			
+			$('#cancel2').click(function(){
+				$('#signUpPad').fadeOut(1000,function(){
+					$('.component').fadeIn(1000);
+				});
+			});
 
 			$('#muteBtn').click(function(){
 				$('#muteBtn').hide();
