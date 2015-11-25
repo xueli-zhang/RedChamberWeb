@@ -65,7 +65,7 @@ block content
 						li#sec  
 		
 			
-			form#logInPad(method="post")
+			form#logInPad(action='/logIn' method="post")
 				.title 歡迎登入
 				.inputContent
 					input#logUN(type="text" name="name" placeholder="請輸入玩家名稱")
@@ -78,7 +78,7 @@ block content
 				#logErr
 
 			
-			form#signUpPad(method="post")
+			form#signUpPad(action='/signUp' method="post")
 				.title 歡迎註冊
 				.inputContent
 					input#signUN(type="text" name="name" placeholder="請輸入玩家名稱")
@@ -226,12 +226,16 @@ block content
 				$('#logInPad').submit();
 			});
 			$('#signUpBtn').click(function(){
-				if($('#signUN').val()==null||$('#signPW').val()==null||$('#signUN').val().trim()==''||$('#signUN').val().trim()==''||$('#signRPW').val()==null||$('#signRPW').val().trim()==''||$('#email').val().trim()==''||$('#email').val()==null){
+				if($('#signUN').val()==null||$('#signPW').val()==null||$('#signUN').val().trim()==''||$('#signUN').val().trim()==''||$('#signRPW').val()==null||$('#signRPW').val().trim()==''||$('#emailInput').val().trim()==''||$('#emailInput').val()==null){
 					$('#signErr').html('用戶信息不能為空!');
 					return;
 				}
-				if($('#email').val().indexOf('@')==-1){					
+				if($('#emailInput').val().indexOf('@')==-1){					
 					$('#signErr').html('郵箱不正確！');
+					return;
+				}
+				if($('#signPW').val()!=$('#signRPW').val()){
+					$('#signErr').html('兩次密碼必須一致！');
 					return;
 				}
 				$('#signUpPad').submit();
