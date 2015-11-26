@@ -1,7 +1,10 @@
 extends layout
 
 block content
-	img#bkg(src='https://88f7585151da6f0eb044adb480012d24af7f35ca.googledrive.com/host/0B8VElOPvAs5qVHlhNTRHbmVkLW8/homeBkg.jpg')
+	- if(success!=null)
+		img#bkg(src='https://88f7585151da6f0eb044adb480012d24af7f35ca.googledrive.com/host/0B8VElOPvAs5qVHlhNTRHbmVkLW8/wlkTPic.jpg')
+	- else	
+		img#bkg(src='https://88f7585151da6f0eb044adb480012d24af7f35ca.googledrive.com/host/0B8VElOPvAs5qVHlhNTRHbmVkLW8/homeBkg.jpg')
 	img#bkg2(src='https://88f7585151da6f0eb044adb480012d24af7f35ca.googledrive.com/host/0B8VElOPvAs5qVHlhNTRHbmVkLW8/homeBkg.jpg')
 	audio#ost(autoplay loop)
 			source(src='https://dl.dropboxusercontent.com/u/23011911/public/musics/homeOst.mp3' type='audio/mp3')
@@ -37,10 +40,16 @@ block content
 						a#credits(href='#') 開發人員
 					li
 						a#email(href='#') 郵件我們
-					li
-						button#logIn(type="button") 玩家登錄
-					li
-						button#signUp(type="button") 玩家註冊
+					- if(!user)
+						li
+							button#logIn(type="button") 玩家登錄
+						li
+							button#signUp(type="button") 玩家註冊
+					- else
+						li
+							button#user(type="button") 玩家首頁
+						li
+							button#logOut(type="button") 玩家退出
 					
 				button#hideBtn(type="button" title="隱藏界面(hide menu)")
 					img(id='hide' src='https://83fcad1b71ffbe94c363de4ac378b71a6463a5e8.googledrive.com/host/0B2HAvB_6mypLflVOZDRjNGpRdElPTGFZMjZneFBCblFWazh1WlMtSmJBLWI2WGFwY0VqVEE/hide.png')
@@ -208,6 +217,15 @@ block content
 				$('#logIn').css('background-color','transparent');
 				$('.clock').css('background-color','rgba(255,215,0,0.8)');
 			});
+			$('#user').hover(function(){
+				console.log("shows up");
+				$('#logInPic').fadeIn(500);
+				$('.clock, #user').css('background-color','rgba(0,255,0,0.8)');
+			},function(){				
+				$('#logInPic').fadeOut(500);
+				$('#user').css('background-color','transparent');
+				$('.clock').css('background-color','rgba(255,215,0,0.8)');
+			});
 			$('#signUp').hover(function(){
 				console.log("shows up");
 				$('#signUpPic').fadeIn(500);
@@ -215,6 +233,15 @@ block content
 			},function(){				
 				$('#signUpPic').fadeOut(500);
 				$('#signUp').css('background-color','transparent');
+				$('.clock').css('background-color','rgba(255,215,0,0.8)');
+			});
+			$('#logOut').hover(function(){
+				console.log("shows up");
+				$('#signUpPic').fadeIn(500);
+				$('.clock, #logOut').css('background-color','rgba(255,52,179,0.8)');
+			},function(){				
+				$('#signUpPic').fadeOut(500);
+				$('#logOut').css('background-color','transparent');
 				$('.clock').css('background-color','rgba(255,215,0,0.8)');
 			});
 

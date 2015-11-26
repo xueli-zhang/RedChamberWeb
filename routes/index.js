@@ -6,7 +6,11 @@ var User = require('../models/user.js');
 /* GET home page. */
 router.get('/', function(req, res, next) {	
 	console.log(req.session);
-  res.render('index', { title: '幻想紅樓夢 I--櫻花飛舞時' });
+	res.render('index', { 
+  		title: '幻想紅樓夢 I--櫻花飛舞時',
+  		user: req.session.user,
+  		success: req.flash('success').toString()
+  	});
 });
 router.post('/signUp', function(req, res){
 	console.log("get in to signUp");
@@ -33,17 +37,28 @@ router.post('/signUp', function(req, res){
 			req.flash('signErr', '玩家名稱已存在！');
 			return res.redirect('/signUpErr');
 		}
-		console.log("try to save user");
-		newUser.save(function(err, user){
-			if(err){
-				console.log('save error')
+		User.get(newUser.email, function(err, user){
+			if(err){				
 				req.flash('signErr', err);
 				return res.redirect('/signUpErr');
 			}
-			req.session.user = user;
-			console.log('finishing reg');
-			req.flash('success', '註冊成功，歡迎加入！');
-			res.redirect('/');
+
+			if(user){
+				req.flash('signErr', '郵箱已在本網站經註冊！');
+				return res.redirect('/signUpErr');
+			}
+			console.log("try to save user");
+			newUser.save(function(err, user){
+				if(err){
+					console.log('save error')
+					req.flash('signErr', err);
+					return res.redirect('/signUpErr');
+				}
+				req.session.user = user;
+				console.log('finishing reg');
+				req.flash('success', '註冊成功，歡迎加入！');
+				res.redirect('/');
+			});
 		});
 	});
 });
