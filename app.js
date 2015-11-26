@@ -7,8 +7,8 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var settings = require('./settings');
-var session = require('express-session');
 var flash = require('connect-flash');
+var session = require('express-session');
 var users = require('./routes/users');
 var MongoStore = require('connect-mongo')(session);
 
@@ -24,11 +24,9 @@ app.use(favicon(__dirname+'/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser('secret'));
+app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
-app.use('/users', users);
 app.use(session({
   secret: settings.cookieSecret,
   key: settings.db,
@@ -43,6 +41,10 @@ app.use(session({
   saveUninitialized: false,
   resave: true
 }));//start a session
+
+app.use('/', routes);
+app.use('/users', users);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -4,7 +4,8 @@ var crypto = require('crypto');
 var User = require('../models/user.js');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res, next) {	
+	console.log(req.session);
   res.render('index', { title: '幻想紅樓夢 I--櫻花飛舞時' });
 });
 router.post('/signUp', function(req, res){
@@ -20,24 +21,24 @@ router.post('/signUp', function(req, res){
 		password : password,
 		email : email
 	});
-
+	console.log("set up new User!");
 	User.get(newUser.name, function(err, user){
 		if(err){
 			req.flash('signErr', err);
-			return res.redirect('/');
+			return res.redirect('/signUpErr');
 		}
+
+		console.log("db works ok");
 		if(user){
 			req.flash('signErr', '玩家名稱已存在！');
-			return res.redirect('/');
+			return res.redirect('/signUpErr');
 		}
-		if(email){
-			req.flash('signErr', '郵箱已經在本網站使用過！');
-			return res.redirect('/');
-		}
+		console.log("try to save user");
 		newUser.save(function(err, user){
 			if(err){
+				console.log('save error')
 				req.flash('signErr', err);
-				return res.redirect('/');
+				return res.redirect('/signUpErr');
 			}
 			req.session.user = user;
 			console.log('finishing reg');
@@ -46,7 +47,7 @@ router.post('/signUp', function(req, res){
 		});
 	});
 });
-router.get('/signUp',function(req, res){
-	res.render('index',{title: req.flash()});
-})
+router.get('/signUpErr',function(req,res){
+	res.render('signUpErr', {'signErr': req.flash('signErr').toString()});
+});
 module.exports = router;
