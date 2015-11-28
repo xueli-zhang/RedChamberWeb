@@ -42,7 +42,8 @@ User.prototype.save = function(callback) {
 };
 
 //通过名字读取用户信息
-User.get = function(name, callback) {
+User.getUserName = function(name, callback) {
+  console.log('name call');
   //打开数据库
   mongodb.open(function (err, db) {
     if (err) {
@@ -58,6 +59,7 @@ User.get = function(name, callback) {
       collection.findOne({
         name: name
       }, function (err, user) {
+        console.log(user);
         mongodb.close();
         if (err) {
           return callback(err);//失败！返回 err 信息
@@ -69,8 +71,9 @@ User.get = function(name, callback) {
 };
 
 //通过email读取数据
-User.get = function(email, callback) {
+User.getEmail = function(email, callback) {
   //打开数据库
+  console.log('email call');
   mongodb.open(function (err, db) {
     if (err) {
       return callback(err);//错误，返回 err 信息

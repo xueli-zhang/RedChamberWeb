@@ -3,7 +3,10 @@ extends layout
 block content
 	- if(success!=null)
 		img#bkg(src='https://88f7585151da6f0eb044adb480012d24af7f35ca.googledrive.com/host/0B8VElOPvAs5qVHlhNTRHbmVkLW8/wlkTPic.jpg')
-	- else	
+		span= success
+	- else if(user)
+		img#bkg(src='https://88f7585151da6f0eb044adb480012d24af7f35ca.googledrive.com/host/0B8VElOPvAs5qVHlhNTRHbmVkLW8/cridtsPic.jpg')
+	- else
 		img#bkg(src='https://88f7585151da6f0eb044adb480012d24af7f35ca.googledrive.com/host/0B8VElOPvAs5qVHlhNTRHbmVkLW8/homeBkg.jpg')
 	img#bkg2(src='https://88f7585151da6f0eb044adb480012d24af7f35ca.googledrive.com/host/0B8VElOPvAs5qVHlhNTRHbmVkLW8/homeBkg.jpg')
 	audio#ost(autoplay loop)
@@ -49,7 +52,7 @@ block content
 						li
 							button#user(type="button") 玩家首頁
 						li
-							button#logOut(type="button") 玩家退出
+							a#logOut(href='/logOut') 玩家退出
 					
 				button#hideBtn(type="button" title="隱藏界面(hide menu)")
 					img(id='hide' src='https://83fcad1b71ffbe94c363de4ac378b71a6463a5e8.googledrive.com/host/0B2HAvB_6mypLflVOZDRjNGpRdElPTGFZMjZneFBCblFWazh1WlMtSmJBLWI2WGFwY0VqVEE/hide.png')
@@ -77,9 +80,9 @@ block content
 			form#logInPad(action='/logIn' method="post")
 				.title 歡迎登入
 				.inputContent
-					input#logUN(type="text" name="name" placeholder="請輸入玩家名稱")
+					input#logUN(type="text" name="logName" placeholder="請輸入玩家名稱")
 				.inputContent
-					input#logPW(type="password" name="password" placeholder="請輸入玩家密碼")
+					input#logPW(type="password" name="logPassword" placeholder="請輸入玩家密碼")
 				.padButtons
 					button#logInBtn(type="button") 登入
 				.padButtons
@@ -267,7 +270,6 @@ block content
 				}
 				$('#signUpPad').submit();
 			});
-
 			$('#logIn').click(function(){
 				console.log('login clicked');
 				$('.component').fadeOut(1000,function(){
