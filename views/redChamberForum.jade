@@ -1,0 +1,30 @@
+extends RCFlayout
+
+block content
+	- posts.forEach(function(post, index){
+		p
+			h2= post.title
+		p.info
+			|玩家:#{post.name}
+			|日期:#{post.time.minute}
+		p #{post.post}
+	- })
+	- if(user)
+		form#post(action="/redChamberForum" method="post")
+			input#title(type="text" name="title" placeholder="請輸入討論話題")
+			textarea#content(name="post" rows="50" cols="100" placeholder="請輸入話題內容！")
+			button#postBtn(type="button" title="發表話題") 發表
+			button#cancel(type="button" title="取消") 取消
+			#postErr
+	- else
+		a(href='/' title="點擊進入主頁登錄或註冊！")#Hint 登錄后可以加入討論！
+
+	script.
+		$('#postBtn').click(function(){
+			if($('#title').val()==null||$('#title').val().trim()==''||$('#content').val()==null||$('#content').val().trim()==''){
+				$('#postErr').html('討論話題和內容不能為空！');
+				return;
+			}
+			console.log('staring submit');
+			$('#post').submit();
+		});

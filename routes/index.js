@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var crypto = require('crypto');
 var User = require('../models/user.js');
+var Post = require('../models/post.js');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {	
@@ -22,6 +23,7 @@ router.get('/', function(req, res, next) {
 		});
 	}
 });
+router.post('/signUp', checkNotLogin);
 router.post('/signUp', function(req, res){
 	console.log("get in to signUp");
 	var name = req.body.name,
@@ -72,12 +74,14 @@ router.post('/signUp', function(req, res){
 		});
 	});
 });
+router.get('/signUpErr', checkLogin);
 router.get('/signUpErr',function(req,res){
 	res.render('signUpErr', {
 		title: '未能成功註冊。。。',
 		signErr: req.flash('signErr').toString()
 	});
 });
+router.post('/logIn',checkNotLogin);
 router.post('/logIn', function(req, res){
 	var md5 = crypto.createHash('md5'),
 		password = md5.update(req.body.logPassword).digest('hex');
@@ -95,14 +99,69 @@ router.post('/logIn', function(req, res){
 		res.redirect('/');
 	});
 });
+router.get('/logInErr', checkLogin);
 router.get('/logInErr', function(req, res){
 	res.render('logInErr', {
 		title: '未能成功登陸。。。',
 		logInErr: req.flash('logInErr').toString()
 	})
 });
+router.get('/logOut', checkLogin)
 router.get('/logOut', function(req, res){
 	req.session.user = null;
 	res.redirect('/');
 });
+
+router.get('/redChamberForum', function(req, res){
+	Post.get(null, function(err, posts){
+		if(err){
+			posts = [];
+		}
+		console.log('starting to load redChamberForum');
+		res.render('redChamberForum',{
+			title: '夢幻紅樓夢遊戲討論區',
+			user: req.session.user,
+			PostSucc: req.flash('PostSucc').toString(),
+			posts: posts
+		});
+	});
+});
+
+router.post('/redChamberForum', checkLogin);
+router.post('/redChamberForum', function(req, res){
+	console.log('staring to post');
+	var currentUser = req.session.user,
+		post = new Post(currentUser.name, req.body.title, req.body.post);
+	post.save(function(err){
+		if(err){
+			req.flash('PostErr', err);
+			return res.redirect('/PostErr');
+		}
+		req.flash('PostSucc', '發佈成功');
+		res.redirect('/redChamberForum');
+	});
+});
+
+router.get('/PostErr', function(req, res){
+	res.render('PostErr',{
+		title: '發表出錯了。。。',
+		user: req.session.user,
+		PostErr: req.flash('PostErr').toString()
+	});
+});
+
+function checkLogin(req, res, next) {
+  if (!req.session.user) {
+    req.flash('error', '未登錄!'); 
+    res.redirect('/');
+  }
+  next();
+}
+function checkNotLogin(req,res,next){
+	if(req.session.user){
+		req.flash('error', '已登錄！');
+		res.redirect('back');
+	}
+	next();
+}
 module.exports = router;
