@@ -27,10 +27,9 @@ block content
 				.padButtons
 					button#cancel(type="button" title="取消") 取消
 				#postSucc= PostSucc
-			ul
-				li.padButtons1
+				.padButtons1
 					button#upload(type="button" title="上傳圖片") 上傳圖片
-				li.padButtons1
+				.padButtons1
 					button#indexBtn(type="button" title="返回主頁") 返回主頁
 			form#uploadPad(action='/upload' method='post' enctype='multipart/form-data')
 				.title 上傳圖片
@@ -89,7 +88,7 @@ block content
 		});
 		$('#upload').click(function(){
 			console.log('uploading pics');
-			$('#uploadPad').show();
+			$('#uploadPad').fadeIn(1000);
 		});
 		$('#uploadBtn').click(function(){
 			$('#uploadPad').submit();
@@ -98,7 +97,7 @@ block content
 			window.location.herf="/";
 		})
 		$('#cancel1').click(function(){
-			$('#uploadPad').hide();
+			$('#uploadPad').fadeOut(1000);
 		});
 		$('#muteBtn').click(function(){
 			$('#muteBtn').hide();
