@@ -67,7 +67,7 @@ block content
 							|#{index+1}樓
 						p.content= post.post
 						.comment
-							a(href='#' title='#{post.comments}條評論') 評論[#{post.comments}]
+							a(href='/comment/#{post.user.name}' title='#{post.comments}條評論') 評論[#{post.comments}]
 			- })
 
 

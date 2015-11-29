@@ -1,4 +1,42 @@
 extends commentLayout
 
 block content
-	post.comments.forEach(function)
+	- post.comments.forEach(function(comment, index){
+		p
+			作者: #{comment.name}
+			span.info 回復于#{comment.time}
+		p
+			#{comment.content}
+	- })
+
+	form#commentCont(method='post')
+		- if(user)
+			姓名：
+				|input(type='text' name='name' value='#{user.name}')
+			br
+			郵箱：			
+				|input(type='text' name='email' value = '#{user.email')
+		- else
+			姓名：
+				|input(type='text' name='name' placeholder='請輸入玩家姓名')
+			br
+			郵箱：			
+				|input(type='text' name='email' placeholder='請輸入玩家郵箱')
+
+		textarea(name='content' rows='5' cols ='80')
+		br
+		button#submitBtn(type='button') 留言
+		button#cancel(type='button') 取消
+		span#err
+
+	script.
+		$('#submitBtn').click(function(){
+			if($('input, textarea').val()==null||$('input, textarea').val().trim()==""){
+				$('#err').html('姓名，郵箱以及留言內容都不能為空');
+				return;
+			}
+			$('#commentCont').submit();
+		});
+		$('#cancel').click(function(){
+			$('input, textarea').html('');
+		});
