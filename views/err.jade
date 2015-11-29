@@ -1,0 +1,9 @@
+extends errlayout
+
+block content
+	img#bkg(src='https://69c47024c09c9a366a5f9d430ef7adedababea05.googledrive.com/host/0B8VElOPvAs5qc3dJTXp2MVM3MWc/Erro.png')
+	audio#ost(autoplay)
+			source(src='https://559dd50f715cd8bc61ba458b73bc5e8068ac9e28.googledrive.com/host/0B8VElOPvAs5qV1JGMFZCY0E4LVk/error.wav' type='audio/wav')
+	span#err= err
+
+	a(href='/' title='點擊返回主頁') 返回主頁重新開始

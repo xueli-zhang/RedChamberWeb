@@ -78,9 +78,9 @@ router.post('/signUp', function(req, res){
 });
 
 router.get('/signUpErr',function(req,res){
-	res.render('signUpErr', {
+	res.render('err', {
 		title: '未能成功註冊。。。',
-		signErr: req.flash('signErr').toString()
+		err: req.flash('signErr').toString()
 	});
 });
 
@@ -103,9 +103,9 @@ router.post('/logIn', function(req, res){
 });
 
 router.get('/logInErr', function(req, res){
-	res.render('logInErr', {
+	res.render('err', {
 		title: '未能成功登陸。。。',
-		logInErr: req.flash('logInErr').toString()
+		err: req.flash('logInErr').toString()
 	});
 });
 router.get('/logOut', function(req, res){
@@ -142,10 +142,10 @@ router.post('/redChamberForum', function(req, res){
 });
 
 router.get('/PostErr', function(req, res){
-	res.render('PostErr',{
+	res.render('err',{
 		title: '發表出錯了。。。',
 		user: req.session.user,
-		PostErr: req.flash('PostErr').toString()
+		err: req.flash('PostErr').toString()
 	});
 });
 
