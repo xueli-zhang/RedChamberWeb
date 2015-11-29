@@ -1,6 +1,7 @@
 //var mongodb = require('./db');
 var mongodb = require('mongodb').Db,
   settings = require('../settings');
+  
 function Post(user, title, post) {
   this.user= user;
   this.photo = user.photo;

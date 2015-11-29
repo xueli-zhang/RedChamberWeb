@@ -101,12 +101,12 @@ router.post('/logIn', function(req, res){
 		res.redirect('/');
 	});
 });
-router.get('/logInErr', checkLogin);
+
 router.get('/logInErr', function(req, res){
 	res.render('logInErr', {
 		title: '未能成功登陸。。。',
 		logInErr: req.flash('logInErr').toString()
-	})
+	});
 });
 router.get('/logOut', checkLogin)
 router.get('/logOut', function(req, res){
