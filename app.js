@@ -38,6 +38,7 @@ app.use(session({
   saveUninitialized: false,
   resave: true
 }));//start a session
+
 app.use(multer({
   dest: './upload',
   rename: function(fieldname, filename){

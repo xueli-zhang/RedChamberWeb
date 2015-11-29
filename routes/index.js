@@ -24,7 +24,7 @@ router.get('/', function(req, res, next) {
 		});
 	}
 });
-router.post('/signUp', checkNotLogin);
+
 router.post('/signUp', function(req, res){
 	console.log("get in to signUp");
 	var name = req.body.name,
@@ -76,14 +76,14 @@ router.post('/signUp', function(req, res){
 		});
 	});
 });
-router.get('/signUpErr', checkLogin);
+
 router.get('/signUpErr',function(req,res){
 	res.render('signUpErr', {
 		title: '未能成功註冊。。。',
 		signErr: req.flash('signErr').toString()
 	});
 });
-router.post('/logIn',checkNotLogin);
+
 router.post('/logIn', function(req, res){
 	var md5 = crypto.createHash('md5'),
 		password = md5.update(req.body.logPassword).digest('hex');
@@ -108,7 +108,6 @@ router.get('/logInErr', function(req, res){
 		logInErr: req.flash('logInErr').toString()
 	});
 });
-router.get('/logOut', checkLogin)
 router.get('/logOut', function(req, res){
 	req.session.user = null;
 	res.redirect('/');
@@ -128,7 +127,6 @@ router.get('/redChamberForum', function(req, res){
 	});
 });
 
-router.post('/redChamberForum', checkLogin);
 router.post('/redChamberForum', function(req, res){
 	console.log('staring to post');
 	var currentUser = req.session.user,
@@ -150,7 +148,7 @@ router.get('/PostErr', function(req, res){
 		PostErr: req.flash('PostErr').toString()
 	});
 });
-router.post('/upload',checkLogin);
+
 router.post('/upload', function(req, res){
 	req.flash('PostSucc', '上傳成功！');
 	res.redirect('/redChamberForum');
@@ -196,18 +194,4 @@ router.get('/u/:name/:day/:title', function (req, res) {
   });
 });
 
-function checkLogin(req, res, next) {
-  if (!req.session.user) {
-    req.flash('error', '未登錄!'); 
-    res.redirect('/');
-  }
-  next();
-}
-function checkNotLogin(req,res,next){
-	if(req.session.user){
-		req.flash('error', '已登錄！');
-		res.redirect('back');
-	}
-	next();
-}
 module.exports = router;
