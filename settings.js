@@ -1,6 +1,4 @@
-module.exports = { 
-  cookieSecret: '6565426', 
-  db: 'redChamber', 
-  host: 'localhost',
-  port: 27017
-}; 
+module.exports={
+	cookieSecret: 'goodSecret',
+	url: 'mongodb://Xueli Zhang:bnjloveme7@oceanic.mongohq.com:10009/xcdb'
+};

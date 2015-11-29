@@ -1,0 +1,12 @@
+extends userLayout
+
+block content
+	- posts.forEach(function(post, index){
+		p
+			h2
+				a(href='/u/#{post.user.name}/#{post.time.day}/#{post.title}') #{post.title}
+		p.info
+			a(href='/u/#{post.user.name}') 作者： #{post.user.name}
+			|日期： #{post.time.minute}
+		p.content= post.post
+	- })

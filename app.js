@@ -11,6 +11,7 @@ var flash = require('connect-flash');
 var session = require('express-session');
 var users = require('./routes/users');
 var MongoStore = require('connect-mongo')(session);
+var multer = require('multer');
 
 var app = express();
 
@@ -33,14 +34,17 @@ app.use(session({
   cookie:{
     maxAge: 1000*60*60*24*30//30 days
   },
-  store: new MongoStore({
-    db: settings.db,
-    host: settings.host,
-    port: settings.port
-  }),
+  url: settings.url,
   saveUninitialized: false,
   resave: true
 }));//start a session
+app.use(multer({
+  dest: './upload',
+  rename: function(fieldname, filename){
+    console.log('using multer');
+    return filename;
+  }
+}));
 
 app.use('/', routes);
 app.use('/users', users);

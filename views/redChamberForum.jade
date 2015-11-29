@@ -26,18 +26,45 @@ block content
 					button#postBtn(type="button" title="發表話題") 發表
 				.padButtons
 					button#cancel(type="button" title="取消") 取消
-				#postErr
+				#postSucc= PostSucc
+			.padButtons1
+					button#upload(type="button" title="上傳圖片") 上傳圖片
+			form#uploadPad(action='/upload' method='post' enctype='multipart/form-data')
+				.title 上傳圖片
+				.inputCont
+					input(type="file" name="file1")
+				.inputCont
+					input(type="file" name="file2")
+				.inputCont
+					input(type="file" name="file3")
+				.inputCont
+					input(type="file" name="file4")
+				.inputCont
+					input(type="file" name="file5")
+				.padButtons
+					button#uploadBtn(type='button') 上傳
+				.padButtons
+					button#cancel1(type='button') 取消
+
+
 		- else
 			a(href='/' title="點擊進入主頁登錄或註冊！")#Hint 登錄后可以加入討論！
 
 		#posts
+			.title 最新話題
 			- posts.forEach(function(post, index){
-				p
-					h2= post.title
-				p.info
-					|玩家:#{post.name}
-					|日期:#{post.time.minute}
-				p #{post.post}
+				.PContainer
+					.postBlock
+						p.topic
+							a(href='/u/#{post.user.name}/#{post.time.day}/#{post.title}') #{post.title}
+						p.info
+							img.userPhoto(src='#{post.user.photo}' title=post.user.name)
+							a(href='/u/#{post.user.name}') 玩家: #{post.user.name}
+							|日期:#{post.time.minute}
+							|#{index+1}樓
+						p.content= post.post
+						.comment
+							a(href='#' title='#{post.comments}條評論') 評論[#{post.comments}]
 			- })
 
 
@@ -56,6 +83,16 @@ block content
 		});
 		$('#cancel').click(function(){
 			$('#title,#content').val('');
+		});
+		$('#upload').click(function(){
+			console.log('uploading pics');
+			$('#uploadPad').show();
+		});
+		$('#uploadBtn').click(function(){
+			$('#uploadPad').submit();
+		});
+		$('#cancel1').click(function(){
+			$('#uploadPad').hide();
 		});
 		$('#muteBtn').click(function(){
 			$('#muteBtn').hide();

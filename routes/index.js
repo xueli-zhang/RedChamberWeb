@@ -3,6 +3,7 @@ var router = express.Router();
 var crypto = require('crypto');
 var User = require('../models/user.js');
 var Post = require('../models/post.js');
+var Comment = require('../models/Comment.js');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {	
@@ -35,7 +36,8 @@ router.post('/signUp', function(req, res){
 	var newUser = new User({
 		name : name,
 		password : password,
-		email : email
+		email : email,
+		photo : "https://88f7585151da6f0eb044adb480012d24af7f35ca.googledrive.com/host/0B8VElOPvAs5qVHlhNTRHbmVkLW8/userDPho.png"
 	});
 	console.log("set up new User!");
 	User.getUserName(newUser.name, function(err, user){
@@ -113,11 +115,10 @@ router.get('/logOut', function(req, res){
 });
 
 router.get('/redChamberForum', function(req, res){
-	Post.get(null, function(err, posts){
+	Post.getAll(null, function(err, posts){
 		if(err){
 			posts = [];
 		}
-		console.log('starting to load redChamberForum');
 		res.render('redChamberForum',{
 			title: '夢幻紅樓夢遊戲討論區',
 			user: req.session.user,
@@ -131,7 +132,7 @@ router.post('/redChamberForum', checkLogin);
 router.post('/redChamberForum', function(req, res){
 	console.log('staring to post');
 	var currentUser = req.session.user,
-		post = new Post(currentUser.name, req.body.title, req.body.post);
+		post = new Post(currentUser, req.body.title, req.body.post);
 	post.save(function(err){
 		if(err){
 			req.flash('PostErr', err);
@@ -148,6 +149,51 @@ router.get('/PostErr', function(req, res){
 		user: req.session.user,
 		PostErr: req.flash('PostErr').toString()
 	});
+});
+router.post('/upload',checkLogin);
+router.post('/upload', function(req, res){
+	req.flash('PostSucc', '上傳成功！');
+	res.redirect('/redChamberForum');
+});
+
+router.get('/u/:name', function (req, res) {
+  //检查用户是否存在
+  User.getUserName(req.params.name, function (err, user) {
+    if (!user) {
+      req.flash('error', '用户不存在!'); 
+      return res.redirect('/');//用户不存在则跳转到主页
+    }
+    //查询并返回该用户的所有文章
+    Post.getAll(user.name, function (err, posts) {
+      if (err) {
+        req.flash('error', err); 
+        return res.redirect('/');
+      }
+      res.render('user', {
+        title: user.name,
+        posts: posts,
+        user: req.session.user,
+        success: req.flash('success').toString(),
+        error: req.flash('error').toString()
+      });
+    });
+  }); 
+});
+
+router.get('/u/:name/:day/:title', function (req, res) {
+  Post.getOne(req.params.name, req.params.day, req.params.title, function (err, post) {
+    if (err) {
+      req.flash('error', err); 
+      return res.redirect('/');
+    }
+    res.render('article', {
+      title: req.params.title,
+      post: post,
+      user: req.session.user,
+      success: req.flash('success').toString(),
+      error: req.flash('error').toString()
+    });
+  });
 });
 
 function checkLogin(req, res, next) {

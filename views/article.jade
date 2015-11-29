@@ -1,0 +1,7 @@
+extends ATClayout
+
+block content
+	p.info
+		a(href='/u/#{post.user.name}') 玩家：#{post.user.name}
+		|日期： #{post.time.minute}
+	p.content= post.post
