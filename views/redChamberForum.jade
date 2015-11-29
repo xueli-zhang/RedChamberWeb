@@ -59,10 +59,10 @@ block content
 				.PContainer
 					.postBlock
 						p.topic
-							a(href='/u/#{post.user.name}/#{post.time.day}/#{post.title}') #{post.title}
+							a(href='/u/#{post.user.name}/#{post.time.day}/#{post.title}' title='查看更多') #{post.title}
 						p.info
 							img.userPhoto(src='#{post.user.photo}' title=post.user.name)
-							a(href='/u/#{post.user.name}') 玩家: #{post.user.name}
+							a(href='/u/#{post.user.name}' title='查看更多') 玩家: #{post.user.name}
 							|日期:#{post.time.minute}
 							|#{index+1}樓
 						p.content= post.post
