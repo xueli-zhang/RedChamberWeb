@@ -3,7 +3,7 @@ var router = express.Router();
 var crypto = require('crypto');
 var User = require('../models/user.js');
 var Post = require('../models/post.js');
-var Comment = require('../models/Comment.js');
+var Comment = require('../models/comment.js');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {	
