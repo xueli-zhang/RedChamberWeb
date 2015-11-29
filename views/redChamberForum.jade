@@ -29,6 +29,8 @@ block content
 				#postSucc= PostSucc
 			.padButtons1
 					button#upload(type="button" title="上傳圖片") 上傳圖片
+			.padButtons1
+					button#indexBtn(type="button" title="返回主頁") 返回主頁
 			form#uploadPad(action='/upload' method='post' enctype='multipart/form-data')
 				.title 上傳圖片
 				.inputCont
@@ -91,6 +93,9 @@ block content
 		$('#uploadBtn').click(function(){
 			$('#uploadPad').submit();
 		});
+		$('#indexBtn').click(function(){
+			window.location.herf="/";
+		})
 		$('#cancel1').click(function(){
 			$('#uploadPad').hide();
 		});
